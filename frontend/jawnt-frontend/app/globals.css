@@ -43,10 +43,6 @@ nav a {
   padding: 10px;
 }
 
-input {
-  border: #000000;
-}
-
 .banner {
   height: 100px;
   background-color: hsl(212, 100%, 97%);

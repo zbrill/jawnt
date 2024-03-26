@@ -2,7 +2,11 @@
 
 import React, { useState } from "react"
 
-export const RequestForm = () => {
+type RequestFormProps = {
+    setShowCreateModal: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export const RequestForm = (props: RequestFormProps) => {
     const [newRequest, setNewRequest] = useState<{ reason: string; amount: number, date: string }>({
         reason: '',
         amount: 0,
@@ -19,7 +23,8 @@ export const RequestForm = () => {
     
     const handleSubmitNewRequest = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // TODO: save to database     
+        // TODO: save to database
+        props.setShowCreateModal(false)
       };
 
     return (

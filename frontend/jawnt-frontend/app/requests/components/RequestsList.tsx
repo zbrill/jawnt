@@ -81,7 +81,7 @@ export const RequestsList = () => {
             <span className="close-modal" onClick={() => setShowCreateModal(false)}>
               &times;
             </span>
-            <RequestForm/>
+            <RequestForm setShowCreateModal={setShowCreateModal}/>
           </div>
         </div>
       )}
