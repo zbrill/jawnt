@@ -1,9 +1,12 @@
 'use client'
 
+import { Reimbursement } from "@/app/types"
 import React, { useState } from "react"
 
 type RequestFormProps = {
     setShowCreateModal: React.Dispatch<React.SetStateAction<boolean>>
+    setRequests: React.Dispatch<React.SetStateAction<Reimbursement[]>>
+    requests: Reimbursement[]
 }
 
 export const RequestForm = (props: RequestFormProps) => {
@@ -24,7 +27,18 @@ export const RequestForm = (props: RequestFormProps) => {
     const handleSubmitNewRequest = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // TODO: save to database
-        props.setShowCreateModal(false)
+        console.log('New Request:', newRequest);
+        const r: Reimbursement = {
+          "id": 10,
+          "date": newRequest.date,
+          "description": newRequest.reason,
+          "bankAccount": "*****2885",
+          "amount": newRequest.amount,
+          "status": "Pending"
+        }
+        props.setShowCreateModal(false);
+        props.requests.push(r);
+        props.setRequests(props.requests)
       };
 
     return (

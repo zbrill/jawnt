@@ -2,23 +2,16 @@
 
 import React, { useState, useEffect } from 'react';
 import { RequestForm } from './RequestForm';
+import { Reimbursement } from '@/app/types';
 
-type Request = {
-  id: number;
-  date: string;
-  description: string;
-  bankAccount: string;
-  amount: number;
-  status: string;
-}
 
 export const RequestsList = () => {
-  const [requests, setRequests] = useState<Request[]>([]);
+  const [requests, setRequests] = useState<Reimbursement[]>([]);
   const [showCreateModal, setShowCreateModal] = useState<boolean>(false)
 
   useEffect(() => {
     // Simulate a database call
-    const mockRequests: Request[] = [
+    const mockRequests: Reimbursement[] = [
       {
         id: 1,
         date: '2024-03-25',
@@ -69,7 +62,7 @@ export const RequestsList = () => {
               <td>{request.date}</td>
               <td>{request.description}</td>
               <td>{request.bankAccount}</td>
-              <td>${request.amount.toFixed(2)}</td>
+              <td>${request.amount}</td>
               <td>{request.status}</td>
             </tr>
           ))}
@@ -81,7 +74,9 @@ export const RequestsList = () => {
             <span className="close-modal" onClick={() => setShowCreateModal(false)}>
               &times;
             </span>
-            <RequestForm setShowCreateModal={setShowCreateModal}/>
+            <RequestForm setShowCreateModal={setShowCreateModal} 
+            setRequests={setRequests}
+            requests={requests}/>
           </div>
         </div>
       )}
