@@ -1,8 +1,9 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
+import { RequestForm } from './RequestForm';
 
-interface Request {
+type Request = {
   id: number;
   date: string;
   description: string;
@@ -11,8 +12,9 @@ interface Request {
   status: string;
 }
 
-const RequestsList: React.FC = () => {
+export const RequestsList = () => {
   const [requests, setRequests] = useState<Request[]>([]);
+  const [showCreateModal, setShowCreateModal] = useState<boolean>(false)
 
   useEffect(() => {
     // Simulate a database call
@@ -42,15 +44,15 @@ const RequestsList: React.FC = () => {
         status: 'Rejected',
       },
     ];
+    // database call here
+    // setRequests(getRequests())
+    setRequests(mockRequests);
+  },[]);
 
-    // Simulate the delay of a database call
-    setTimeout(() => {
-      setRequests(mockRequests);
-    }, 1000);
-  }, []);
 
   return (
     <div className="requests-container">
+    <button className="submit-request-btn" onClick={() => setShowCreateModal(true)}>Submit New Request</button>
       <table className="requests-table">
         <thead>
           <tr>
@@ -73,8 +75,16 @@ const RequestsList: React.FC = () => {
           ))}
         </tbody>
       </table>
+      {showCreateModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close-modal" onClick={() => setShowCreateModal(false)}>
+              &times;
+            </span>
+            <RequestForm/>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
-
-export default RequestsList;
