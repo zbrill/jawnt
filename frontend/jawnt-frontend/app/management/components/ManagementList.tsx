@@ -1,14 +1,15 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import { RequestForm } from './RequestForm';
 import { Reimbursement } from '@/app/types';
 import { mockReimbursements } from '@/app/mocks';
+import { ReimbursementReview } from './ReimbursementReview';
 
 
-export const RequestsList = () => {
+export const ManagementList = () => {
   const [reimbursements, setReimbursements] = useState<Reimbursement[]>([]);
-  const [showCreateModal, setShowCreateModal] = useState<boolean>(false)
+  const [selectedReimbursement, setSelectedReimbursement] = useState<Reimbursement>();
+  const [showReviewModal, setShowReviewModal] = useState<boolean>(false);
 
   useEffect(() => {
     // database call here
@@ -16,10 +17,8 @@ export const RequestsList = () => {
     setReimbursements(mockReimbursements);
   },[]);
 
-
   return (
     <div className="requests-container">
-    <button className="submit-request-btn" onClick={() => setShowCreateModal(true)}>Submit New Request</button>
       <table className="requests-table">
         <thead>
           <tr>
@@ -32,7 +31,10 @@ export const RequestsList = () => {
         </thead>
         <tbody>
           {reimbursements.map((reimbursement) => (
-            <tr key={reimbursement.id}>
+            <tr className="management-tr" onClick={() => {
+                setSelectedReimbursement(reimbursement)
+                setShowReviewModal(true)}} 
+                key={reimbursement.id}>
               <td>{reimbursement.date}</td>
               <td>{reimbursement.description}</td>
               <td>{reimbursement.bankAccount}</td>
@@ -42,15 +44,13 @@ export const RequestsList = () => {
           ))}
         </tbody>
       </table>
-      {showCreateModal && (
+      {selectedReimbursement && showReviewModal && (
         <div className="modal">
           <div className="modal-content">
-            <span className="close-modal" onClick={() => setShowCreateModal(false)}>
-              &times;
+            <span className="close-modal" onClick={() => setShowReviewModal(false)}>
+                &times;
             </span>
-            <RequestForm setShowCreateModal={setShowCreateModal} 
-            setRequests={setReimbursements}
-            requests={reimbursements}/>
+            <ReimbursementReview selectedReimbursement={selectedReimbursement}/>
           </div>
         </div>
       )}

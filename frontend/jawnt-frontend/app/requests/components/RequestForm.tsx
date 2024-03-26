@@ -10,9 +10,9 @@ type RequestFormProps = {
 }
 
 export const RequestForm = (props: RequestFormProps) => {
-    const [newRequest, setNewRequest] = useState<{ reason: string; amount: number, date: string }>({
+    const [newRequest, setNewRequest] = useState<{ reason: string; amount: string, date: string }>({
         reason: '',
-        amount: 0,
+        amount: '',
         date: new Date().toLocaleDateString()
       });
 
@@ -33,7 +33,7 @@ export const RequestForm = (props: RequestFormProps) => {
           "date": newRequest.date,
           "description": newRequest.reason,
           "bankAccount": "*****2885",
-          "amount": newRequest.amount,
+          "amount": parseInt(newRequest.amount),
           "status": "Pending"
         }
         props.setShowCreateModal(false);
@@ -53,6 +53,7 @@ export const RequestForm = (props: RequestFormProps) => {
               name="reason"
               value={newRequest.reason}
               onChange={handleInputChange}
+              placeholder="Drove when I should have taken the train"
             />
           </div>
           <div>
@@ -63,6 +64,7 @@ export const RequestForm = (props: RequestFormProps) => {
               name="amount"
               value={newRequest.amount}
               onChange={handleInputChange}
+              placeholder="$"
             />
           </div>
           <div>
