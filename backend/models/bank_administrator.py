@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from uuid import UUID
 from bank import Bank
+from bank_member import BankMember
 
 class BankAdministrator(BaseModel):
     id: int
@@ -8,3 +9,4 @@ class BankAdministrator(BaseModel):
     first_name: str
     last_name: str
     bank: Bank
+    members: list[BankMember]
