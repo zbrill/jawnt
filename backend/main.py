@@ -13,18 +13,19 @@ def get_requests(user_id: int) -> list[Reimbursement]:
         return get_mock_management_requests()
 
 @app.post("/api/v1/requests/update/{request_id}", status_code=200)
-def update_request(request_id: int, status: str):
-    pass
+def update_request_status(request_id: int, status: str):
+    sql = f'''UPDATE reimbursements SET status={status} WHERE id={request_id}'''
+    #pymysql.execute(sql)
 
 '''Some system admin would need to be able to create and provision users
    but that's outside of the functional requirements for this assessment'''
-@app.put("/api/v1/createUser")
+@app.put("/api/v1/createUser", status_code=201)
 def create_user():
     pass
 
 '''Some system admin would need to be able to create and provision banks
    but that's outside of the functional requirements for this assessment'''
-@app.put("/api/v1/createBank")
+@app.put("/api/v1/createBank", status_code=201)
 def create_bank():
     pass
 
