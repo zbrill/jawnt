@@ -1,0 +1,8 @@
+I would use playwright to write feature tests for the app. These tests would look something like this:
+
+test('should navigate to the requests page', async ({ page }) => {
+  await page.goto('http://localhost:3000/')
+  await page.click('text=Requests')
+  await expect(page).toHaveURL('http://localhost:3000/requests')
+  await expect(page.locator('h1')).toContainText('Requests')
+})
