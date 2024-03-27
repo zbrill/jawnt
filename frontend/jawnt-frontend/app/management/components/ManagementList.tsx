@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { Reimbursement } from '@/app/types';
-import { mockReimbursements } from '@/app/mocks';
 import { ReimbursementReview } from './ReimbursementReview';
+import { fetchRequests } from '@/app/api/database';
 
 
 export const ManagementList = () => {
@@ -12,9 +12,11 @@ export const ManagementList = () => {
   const [showReviewModal, setShowReviewModal] = useState<boolean>(false);
 
   useEffect(() => {
-    // database call here
-    // setRequests(getRequests())
-    setReimbursements(mockReimbursements);
+    async function getRequests() {
+      const mockRequests = await fetchRequests(2);
+      setReimbursements(mockRequests);
+    }
+    getRequests()
   },[]);
 
   return (

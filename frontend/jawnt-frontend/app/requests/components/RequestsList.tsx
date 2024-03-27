@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { RequestForm } from './RequestForm';
 import { Reimbursement } from '@/app/types';
-import { getRequestsForUser } from '../../api/database'
+import { fetchRequests } from '@/app/api/database';
 
 
 export const RequestsList = () => {
@@ -11,9 +11,11 @@ export const RequestsList = () => {
   const [showCreateModal, setShowCreateModal] = useState<boolean>(false)
 
   useEffect(() => {
-    // database call here
-    const mockRequests  = getRequestsForUser(1)
-    setReimbursements(mockRequests);
+    async function getRequests() {
+      const mockRequests = await fetchRequests(1);
+      setReimbursements(mockRequests);
+    }
+    getRequests()
   },[]);
 
 

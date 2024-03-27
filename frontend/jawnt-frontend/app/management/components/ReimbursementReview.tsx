@@ -21,7 +21,6 @@ export const ReimbursementReview = (props: ReimbursementReviewProps) => {
           <option value="Pending">Pending</option>
           <option value="Approved">Approved</option>
           <option value="Denied">Denied</option>
-          <option selected>{props.selectedReimbursement.status}</option>
         </select>
       </div>
     </div>

@@ -9,4 +9,4 @@ class BankMember(BaseModel):
     first_name: str
     last_name: str
     bank: Bank
-    reimbursements: Reimbursement
+    reimbursements: list[Reimbursement]
