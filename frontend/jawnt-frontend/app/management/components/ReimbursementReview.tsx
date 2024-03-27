@@ -10,6 +10,8 @@ export const ReimbursementReview = (props: ReimbursementReviewProps) => {
 
   const handleStatusChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
     setStatus(e.target.value);
+    // we would reach out to api to update status here
+    // update_request_status(request_id, status)
   };
 
   return (

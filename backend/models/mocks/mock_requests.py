@@ -32,7 +32,7 @@ def get_mock_management_requests():
     {
       "id": 1,
       "date": '2024-04-01',
-      "description": 'For a prank',
+      "description": "April Fool\'s prank",
       "bankAccount": '*****2885',
       "amount": 1,
       "status": 'Pending',
@@ -40,17 +40,17 @@ def get_mock_management_requests():
     {
       "id": 2,
       "date": '2024-03-26',
-      "description": 'New Laptop after throwing my old one',
+      "description": 'Popped my tire, needed new one',
       "bankAccount": '*****2910',
-      "amount": 2500,
+      "amount": 250,
       "status": 'Approved',
     },
     {
       "id": 3,
       "date": '2024-03-03',
-      "description": 'Hospital bill after breaking my arm',
+      "description": 'Meditation Retreat',
       "bankAccount": '*****5005',
-      "amount": 1200,
+      "amount": 4000,
       "status": 'Rejected',
     },
   ]
