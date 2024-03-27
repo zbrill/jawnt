@@ -1,6 +1,8 @@
 from fastapi import FastAPI
+from fastapi.testclient import TestClient
 from models.mocks.mock_requests import *
 from models.reimbursement import Reimbursement
+
 
 app = FastAPI()
 
@@ -11,6 +13,7 @@ def get_requests(user_id: int) -> list[Reimbursement]:
         return get_mock_user_requests()
     if user_id == 2:
         return get_mock_management_requests()
+
 
 @app.post("/api/v1/requests/update/{request_id}", status_code=200)
 def update_request_status(request_id: int, status: str):
