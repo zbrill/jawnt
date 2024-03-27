@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { RequestForm } from './RequestForm';
 import { Reimbursement } from '@/app/types';
-import { fetchRequests } from '@/app/api/database';
+import { fetchRequests } from '../../api/database'
 
 
 export const RequestsList = () => {

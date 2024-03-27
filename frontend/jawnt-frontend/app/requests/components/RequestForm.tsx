@@ -1,5 +1,6 @@
 'use client'
 
+import { postRequest } from "@/app/api/database"
 import { Reimbursement } from "@/app/types"
 import React, { useState } from "react"
 
@@ -27,7 +28,7 @@ export const RequestForm = (props: RequestFormProps) => {
     const handleSubmitNewRequest = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // TODO: save to database
-        console.log('New Request:', newRequest);
+        // console.log('New Request:', newRequest);
         const r: Reimbursement = {
           "id": 10,
           "date": newRequest.date,
@@ -38,7 +39,8 @@ export const RequestForm = (props: RequestFormProps) => {
         }
         props.setShowCreateModal(false);
         props.requests.push(r);
-        props.setRequests(props.requests)
+        // props.setRequests(props.requests)
+        postRequest(r);
       };
 
     return (

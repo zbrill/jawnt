@@ -25,4 +25,17 @@ export async function fetchRequests(user_id: number): Promise<Reimbursement[]> {
     return []
   }
 }
+
+export async function postRequest(request: Reimbursement) {
+  const response = await fetch(`/api/requests/create`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(request),
+  });
+  return response.json();
+}
+
+
   
