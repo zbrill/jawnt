@@ -8,7 +8,7 @@ type ReimbursementReviewProps = {
 export const ReimbursementReview = (props: ReimbursementReviewProps) => {
   const [status, setStatus] = useState('Pending');
 
-  const handleStatusChange = (e) => {
+  const handleStatusChange = (e: { target: { value: React.SetStateAction<string>; }; }) => {
     setStatus(e.target.value);
   };
 
@@ -21,6 +21,7 @@ export const ReimbursementReview = (props: ReimbursementReviewProps) => {
           <option value="Pending">Pending</option>
           <option value="Approved">Approved</option>
           <option value="Denied">Denied</option>
+          <option selected>{props.selectedReimbursement.status}</option>
         </select>
       </div>
     </div>

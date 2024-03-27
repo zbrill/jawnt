@@ -140,16 +140,6 @@ select:focus {
   cursor: pointer;
 }
 
-.save-request-btn {
-  display: flex;
-  background-color: #007bff;
-  color: #fff;
-  border-radius: 8px;
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
 .modal-content input[type="text"],
 .modal-content input[type="date"],
 .modal-content input[type="number"] {
@@ -158,6 +148,16 @@ select:focus {
   border-radius: 4px;
   width: 100%;
   margin-bottom: 1rem;
+}
+
+.save-request-btn {
+  display: flex;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 .management-tr {

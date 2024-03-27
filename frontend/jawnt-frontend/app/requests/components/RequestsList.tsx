@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { RequestForm } from './RequestForm';
 import { Reimbursement } from '@/app/types';
-import { mockReimbursements } from '@/app/mocks';
+import { getRequestsForUser } from '../../api/database'
 
 
 export const RequestsList = () => {
@@ -12,8 +12,8 @@ export const RequestsList = () => {
 
   useEffect(() => {
     // database call here
-    // setRequests(getRequests())
-    setReimbursements(mockReimbursements);
+    const mockRequests  = getRequestsForUser(1)
+    setReimbursements(mockRequests);
   },[]);
 
 
